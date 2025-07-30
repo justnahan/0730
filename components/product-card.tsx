@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -75,15 +76,16 @@ export function ProductCard({ product }: ProductCardProps) {
   const status = getStatus()
 
   return (
-    <Card 
-      className={`
-        group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl
-        ${rarity.color} border-2 ${rarity.bg} backdrop-blur-sm
-        ${isHovered ? 'shadow-lg shadow-current/20' : ''}
-      `}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <Link href={`/auction/${product.id}`}>
+      <Card 
+        className={`
+          group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl
+          ${rarity.color} border-2 ${rarity.bg} backdrop-blur-sm
+          ${isHovered ? 'shadow-lg shadow-current/20' : ''}
+        `}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
       <CardContent className="p-0">
         {/* Status Badge */}
         <div className="relative">
@@ -155,12 +157,14 @@ export function ProductCard({ product }: ProductCardProps) {
           <Button 
             className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold border-0 transition-all duration-200 hover:shadow-lg hover:shadow-yellow-500/20"
             size="lg"
+            onClick={(e) => e.stopPropagation()}
           >
             <Sword className="h-4 w-4 mr-2" />
-            發動攻擊
+            進入戰場
           </Button>
         </div>
       </CardContent>
     </Card>
+    </Link>
   )
 }
