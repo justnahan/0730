@@ -120,3 +120,118 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom Battle Arena Animations */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-delayed {
+  0%, 50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes bounce-in {
+  0% { 
+    transform: scale(0.3) translateY(100px); 
+    opacity: 0; 
+  }
+  50% { 
+    transform: scale(1.05) translateY(-20px); 
+    opacity: 1; 
+  }
+  70% { 
+    transform: scale(0.9) translateY(10px); 
+  }
+  100% { 
+    transform: scale(1) translateY(0px); 
+    opacity: 1; 
+  }
+}
+
+@keyframes slide-up {
+  from { 
+    transform: translateY(50px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+  }
+  50% { 
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+@keyframes battle-intensity {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animation utility classes */
+.animate-fade-in { animation: fade-in 0.5s ease-out; }
+.animate-fade-in-delayed { animation: fade-in-delayed 1s ease-out; }
+.animate-bounce-in { animation: bounce-in 1s ease-out; }
+.animate-slide-up { animation: slide-up 0.8s ease-out 1s both; }
+.animate-spin-slow { animation: spin-slow 2s linear infinite; }
+.animate-glow-pulse { animation: glow-pulse 2s ease-in-out infinite; }
+.animate-battle-intensity { 
+  background: linear-gradient(-45deg, #1e293b, #334155, #475569, #64748b);
+  background-size: 400% 400%;
+  animation: battle-intensity 3s ease infinite;
+}
+
+/* Battle arena specific effects */
+.battle-effect-attack {
+  animation: spin 0.5s ease-out, fade-in 0.3s ease-out, ping 0.8s ease-out;
+}
+
+.battle-effect-defense {
+  animation: pulse 1s ease-in-out, glow-pulse 1.5s ease-in-out;
+}
+
+.battle-effect-support {
+  animation: bounce 0.8s ease-out, fade-in 0.4s ease-out;
+}
+
+.battle-effect-victory {
+  animation: bounce-in 1.2s ease-out, glow-pulse 2s ease-in-out infinite;
+}
+
+/* Rarity glow effects */
+.rarity-glow-common { filter: drop-shadow(0 0 3px rgba(156, 163, 175, 0.5)); }
+.rarity-glow-rare { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.7)); }
+.rarity-glow-epic { filter: drop-shadow(0 0 8px rgba(147, 51, 234, 0.8)); }
+.rarity-glow-legendary { filter: drop-shadow(0 0 12px rgba(249, 115, 22, 1)); }
+
+/* Responsive battle effects */
+@media (max-width: 768px) {
+  .battle-effect-attack,
+  .battle-effect-defense,
+  .battle-effect-support {
+    animation-duration: 0.3s;
+  }
+  
+  .animate-bounce-in {
+    animation-duration: 0.6s;
+  }
+}
