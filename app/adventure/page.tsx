@@ -6,17 +6,19 @@ import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { 
-  User, 
   Trophy, 
-  Target, 
   Package, 
   History, 
   Star, 
-  Crown, 
   Coins,
   Sword,
   Shield,
-  Zap
+  Zap,
+  Eye,
+  Settings,
+  ArrowRight,
+  Brain,
+  Clock
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -32,19 +34,29 @@ export default function AdventurePage() {
     experience: 750,
     maxExperience: 1000,
     coins: 2350,
+    gems: 15,
+    skillPoints: 8,
     avatar: "/placeholder-avatar.jpg",
     title: "新手冒險者",
     joinDate: "2024-01-15",
     totalBids: 23,
     wonAuctions: 8,
-    winRate: 34.8
+    winRate: 34.8,
+    attributes: {
+      attack: 45,
+      defense: 38,
+      agility: 52,
+      luck: 41
+    }
   }
 
   const achievements = [
-    { id: 1, name: "初次競標", description: "完成第一次競標", icon: "🎯", completed: true },
-    { id: 2, name: "連勝戰士", description: "連續贏得3場競標", icon: "🔥", completed: true },
-    { id: 3, name: "寶物收集家", description: "獲得10件不同物品", icon: "💎", completed: false },
-    { id: 4, name: "金幣大師", description: "累積10000金幣", icon: "💰", completed: false },
+    { id: 1, name: "初次競標", description: "完成第一次競標", icon: "🎯", completed: true, progress: 1, maxProgress: 1 },
+    { id: 2, name: "連勝戰士", description: "連續贏得3場競標", icon: "🔥", completed: true, progress: 3, maxProgress: 3 },
+    { id: 3, name: "寶物收集家", description: "獲得10件不同物品", icon: "💎", completed: false, progress: 7, maxProgress: 10 },
+    { id: 4, name: "金幣大師", description: "累積10000金幣", icon: "💰", completed: false, progress: 2350, maxProgress: 10000 },
+    { id: 5, name: "道具專家", description: "使用道具50次", icon: "⚡", completed: false, progress: 23, maxProgress: 50 },
+    { id: 6, name: "技能大師", description: "學習15個技能", icon: "🧠", completed: false, progress: 6, maxProgress: 15 },
   ]
 
   const recentActivity = [
@@ -55,9 +67,11 @@ export default function AdventurePage() {
   ]
 
   const inventory = [
-    { id: 1, name: "透視鏡", count: 3, icon: "🔍", rarity: "稀有" },
-    { id: 2, name: "時間延長卡", count: 1, icon: "⏰", rarity: "史詩" },
-    { id: 3, name: "幸運符", count: 5, icon: "🍀", rarity: "普通" },
+    { id: 1, name: "狙擊手套", count: 2, icon: "🎯", rarity: "史詩", type: "attack", cooldown: 0 },
+    { id: 2, name: "守護之盾", count: 4, icon: "🛡️", rarity: "稀有", type: "defense", cooldown: 120 },
+    { id: 3, name: "時間沙漏", count: 1, icon: "⏳", rarity: "傳說", type: "support", cooldown: 0 },
+    { id: 4, name: "透視水晶", count: 6, icon: "🔮", rarity: "稀有", type: "support", cooldown: 45 },
+    { id: 5, name: "幸運硬幣", count: 1, icon: "🪙", rarity: "神話", type: "special", cooldown: 86400 },
   ]
 
   return (

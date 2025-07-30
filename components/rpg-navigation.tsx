@@ -39,7 +39,7 @@ export function RPGNavigation() {
           </div>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <Link 
               href="/" 
               className="text-white hover:text-yellow-400 font-semibold border-b-2 border-transparent hover:border-yellow-400 transition-all duration-200"
@@ -57,6 +57,18 @@ export function RPGNavigation() {
               className="text-white hover:text-yellow-400 font-semibold border-b-2 border-transparent hover:border-yellow-400 transition-all duration-200"
             >
               道具商店
+            </Link>
+            <Link 
+              href="/inventory" 
+              className="text-white hover:text-yellow-400 font-semibold border-b-2 border-transparent hover:border-yellow-400 transition-all duration-200"
+            >
+              道具背包
+            </Link>
+            <Link 
+              href="/skills" 
+              className="text-white hover:text-yellow-400 font-semibold border-b-2 border-transparent hover:border-yellow-400 transition-all duration-200"
+            >
+              技能發展
             </Link>
             <Link 
               href="/leaderboard" 
